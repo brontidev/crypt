@@ -1,5 +1,5 @@
-import esbuild from "npm:esbuild";
-import { wasmLoader } from "npm:esbuild-plugin-wasm";
+import esbuild from "esbuild";
+import { wasmLoader } from "esbuild-plugin-wasm";
 
 await esbuild.build({
   entryPoints: ["./pkg/wasm_argon2.js"],
