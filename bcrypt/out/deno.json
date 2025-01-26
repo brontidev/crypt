@@ -1,6 +1,6 @@
 {
   "name": "@bronti/bcrypt",
   "exports": "./mod.ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "exclude": ["!wasm_bcrypt.*"]
 }
