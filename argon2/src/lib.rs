@@ -10,8 +10,10 @@ use argon2::{
 use wasm_bindgen::prelude::*;
 // use bcrypt::{DEFAULT_COST, hash, verify };
 
+
 #[wasm_bindgen]
 pub fn _hash(password: &str) -> Result<String, String> {
+    console_error_panic_hook::set_once();
     let password_as_bytes = password.as_bytes();
     let salt = SaltString::generate(&mut OsRng);
     let argon2 = Argon2::default();
@@ -24,6 +26,7 @@ pub fn _hash(password: &str) -> Result<String, String> {
 
 #[wasm_bindgen]
 pub fn _verify(password: &str, hash: &str) -> Result<bool, String> {
+    console_error_panic_hook::set_once();
     let password_as_bytes = password.as_bytes();
     let parsed_hash = PasswordHash::new(&hash);
     match parsed_hash {

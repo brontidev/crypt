@@ -2,5 +2,5 @@
   "imports": {
     "@std/fs": "jsr:@std/fs@^1.0.1"
   },
-  "workspace": ["./argon2", "./bcrypt"]
+  "workspace": ["./argon2/out", "./bcrypt/out"]
 }
