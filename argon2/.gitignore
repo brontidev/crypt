@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+bin/
+pkg/
+out/wasm_argon2.js
+wasm-pack.log

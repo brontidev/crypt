@@ -1,0 +1,6 @@
+/target
+**/*.rs.bk
+bin/
+pkg/
+out/wasm_bcrypt.js
+wasm-pack.log

@@ -1,0 +1,6 @@
+{
+    "name": "@bronti/argon2",
+    "exports": "./mod.ts",
+    "version": "1.0.3",
+    "exclude": ["!wasm_argon2.*"]
+}  
