@@ -18,18 +18,34 @@
  * @module
  */
 
-import { _hash, _verify } from "./wasm_bcrypt.js";
+export class UnknownError extends Error {}
+
+import { _hash, _verify, VerifyError } from "./wasm_bcrypt.js";
 /**
  * Hashes the password and returns a string
  * @param password Password to hash
  * @returns Hashed Password
  */
-export const hash = (password: string): string => _hash(password);
+export const hash = (password: string): string => { 
+  try {
+    return _hash(password)
+  } catch(_) {
+    throw new UnknownError()
+  }
+}
 /**
  * Checks a password against a hash
  * @param password Password to verify
  * @param hash Hash to check against
  * @returns Is password valid?
  */
-export const verify = (password: string, hash: string): boolean =>
-  _verify(password, hash);
+export const verify = (password: string, hash: string): boolean => {
+  try {
+    return _verify(password, hash)
+  } catch (e) {
+    if(e === VerifyError.InvalidHash) {
+      return false;
+    }
+    throw new UnknownError()
+  }
+}
