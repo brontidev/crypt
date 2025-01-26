@@ -1,4 +1,4 @@
-name: Publish Bcrypt
+name: Publish
 on:
   push:
     branches:
@@ -7,11 +7,14 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-  
+
+    strategy:
+      matrix:
+        package: [argon2, bcrypt]
     permissions:
       contents: read
       id-token: write
-
+    name: Publish ${{ matrix.package }}
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v1
@@ -41,11 +44,11 @@ jobs:
       - name: Install wasm-pack
         run: cargo install wasm-pack
       - name: Build wasm
-        working-directory: ./bcrypt
+        working-directory: ./${{ matrix.package }}
         run: wasm-pack build
       - name: Build Package
-        working-directory: ./bcrypt
+        working-directory: ./${{ matrix.package }}
         run: deno run -A postbuild.ts
       - name: Publish package
-        working-directory: ./bcrypt
-        run: cd out && deno publish
+        working-directory: ./${{ matrix.package }}
+        run: cd out && deno publish --allow-dirty
