@@ -1,10 +1,10 @@
 /**
- * # @ts-rex/argon2
+ * # @bronti/argon2
  * A wasm based argon2 implementation using https://github.com/RustCrypto/password-hashes/tree/master/argon2
  *
  * @example
  * ```ts
- * import { hash, verify } from "@ts-rex/argon2"
+ * import { hash, verify } from "@bronti/argon2"
  * function sign_up(username: string, password: string) {
  *      const hashed_password = hash(password)
  *      db.saveUser({ username, hashed_password })

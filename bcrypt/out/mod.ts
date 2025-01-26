@@ -1,10 +1,10 @@
 /**
- * # @ts-rex/bcrypt
+ * # @bronti/bcrypt
  * A wasm based bcrypt implementation using https://github.com/Keats/rust-bcrypt
  *
  * @example
  * ```ts
- * import { hash. verify } from "@ts-rex/bcrypt"
+ * import { hash. verify } from "@bronti/bcrypt"
  * function sign_up(username: string, password: string) {
  *      const hashed_password = hash(password)
  *      db.saveUser({ username, hashed_password })
@@ -18,7 +18,7 @@
  * @module
  */
 
-import { _hash, _verify } from "./wasm.js";
+import { _hash, _verify } from "./wasm_bcrypt.js";
 /**
  * Hashes the password and returns a string
  * @param password Password to hash
